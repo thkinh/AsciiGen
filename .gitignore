@@ -1,0 +1,15 @@
+# Build artifacts
+/build/
+/Makefile
+/*.cmake
+
+# Object files and compiled binaries
+*.o
+*.obj
+*.so
+*.a
+*.exe
+*.out
+
+
+
