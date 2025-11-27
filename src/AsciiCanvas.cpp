@@ -23,24 +23,23 @@ void AsciiCanvas::clear(char fill)
     std::fill(m_data.begin(), m_data.end(), fill);
 }
 
-//void AsciiCanvas::render() const
-//{
-//    // Print row-by-row
-//    for (size_t y = 0; y < m_height; ++y) {
-//        const char* row = &m_data[y * m_width];
-//        std::cout.write(row, m_width);
-//        std::cout << '\n';
-//    }
-//}
-
-void AsciiCanvas::render() const
+void AsciiCanvas::render(bool trailSpace = false) const
 {
-    for (size_t y = 0; y < m_height; ++y) {
-        for (size_t x = 0; x < m_width; ++x) {
-            char c = m_data[y * m_width + x];
-            std::cout << c << ' ';   // add a space to widen
+    if(trailSpace)
+    {
+        for (size_t y = 0; y < m_height; ++y) {
+            for (size_t x = 0; x < m_width; ++x) {
+                char c = m_data[y * m_width + x];
+                std::cout << c << ' ';   // add a space to widen
+            }
+            std::cout << '\n';
         }
+        return;
+    }
+    // Print row-by-row
+    for (size_t y = 0; y < m_height; ++y) {
+        const char* row = &m_data[y * m_width];
+        std::cout.write(row, m_width);
         std::cout << '\n';
     }
 }
-

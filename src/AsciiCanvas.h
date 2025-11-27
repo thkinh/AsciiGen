@@ -9,7 +9,7 @@ public:
     char getChar(size_t x, size_t y) const;
 
     void clear(char fill = ' ');
-    void render() const;  // print whole canvas at once
+    void render(bool trailSpace) const;  // print whole canvas at once
 
 private:
     size_t m_width;

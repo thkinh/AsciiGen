@@ -1,5 +1,7 @@
 #include "AsciiConverter.h"
+#include "AsciiCanvas.h"
 #include "Pixel.h"
+#include "PixelBuffer.h"
 #include <cstddef>
 #include <map>
 #include <stdexcept>
@@ -57,4 +59,19 @@ const char AsciiConverter::convert(size_t brightness) const
 const std::map<size_t, char> AsciiConverter::getMap() const 
 {
     return m_asciiMap;
+}
+
+bool AsciiConverter::convertWholeCanvas(AsciiCanvas& canvas, const PixelBuffer& buffer)
+{
+    size_t width = buffer.width();
+    size_t height = buffer.height();
+    canvas.clear();
+    for(size_t i = 0; i < width; i++)
+    {
+        for(size_t j = 0; j < height; j++)
+        {
+            canvas.setChar(i, j, convert(buffer.at(i, j))); 
+        }
+    }
+    return true;
 }

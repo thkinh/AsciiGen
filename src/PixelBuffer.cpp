@@ -35,12 +35,12 @@ const Pixel& PixelBuffer::at(size_t x, size_t y) const
     {
         throw std::runtime_error("Out of bound");
     }
-    return m_data[x*y];
+    return m_data[y*m_width + x];
 }
    
 void PixelBuffer::setPixel(size_t x, size_t y,const Pixel& p) 
 {
-    m_data[x*y] = p;
+    m_data[y*m_width + x] = p;
 }
 
 const void PixelBuffer::preview(size_t head) const

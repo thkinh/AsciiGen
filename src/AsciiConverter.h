@@ -5,6 +5,8 @@
 #include <memory>
 #include <vector>
 #include "Pixel.h"
+#include "AsciiCanvas.h"
+#include "PixelBuffer.h"
 
 class AsciiConverter
 {
@@ -15,6 +17,8 @@ public:
     const char convert(const Pixel& p) const;
     const char convert(float lum) const;
     const char convert(size_t lum) const;
+
+    bool convertWholeCanvas(AsciiCanvas& canvas, const PixelBuffer& buffer);
     const std::map<size_t, char> getMap() const;
 
     bool registerAscii(size_t brightress, char asciiChar);

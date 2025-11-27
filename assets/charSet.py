@@ -98,4 +98,5 @@ for char in listChar:
     print(f"'{char[0]}',", end='')
 
 print('\n')
+print("Char count: ",len(listChar))
 
