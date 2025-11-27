@@ -11,3 +11,4 @@
 - Pixel: RGB value, lum value
 - ImageLoader: load image to Pixel
 
+<img width="1306" height="1006" alt="image" src="https://github.com/user-attachments/assets/7a624d0f-ef55-47f3-8d85-f3522b928444" />
