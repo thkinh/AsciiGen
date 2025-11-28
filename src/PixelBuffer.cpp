@@ -1,6 +1,5 @@
 #include "PixelBuffer.h"
 #include "Pixel.h"
-#include <cmath>
 #include <cstddef>
 #include <iostream>
 #include <stdexcept>
@@ -10,6 +9,10 @@ PixelBuffer::PixelBuffer(size_t width, size_t height):
 {
     m_data.resize(width * height);
 }
+
+PixelBuffer::PixelBuffer():
+    m_width(0), m_height(0)
+{}
 
 
 size_t PixelBuffer::height() const

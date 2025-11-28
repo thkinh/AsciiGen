@@ -22,6 +22,7 @@ public:
     const std::map<size_t, char> getMap() const;
 
     bool registerAscii(size_t brightress, char asciiChar);
+    bool registerAsciiList(const std::string& charList);
 
 private:
     size_t m_minLum;

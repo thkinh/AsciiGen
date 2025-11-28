@@ -26,13 +26,30 @@ bool AsciiConverter::registerAscii(size_t brightness, char asciiChar)
     return true;
 }
 
+bool AsciiConverter::registerAsciiList(const std::string& charList)
+{
+    if (charList.empty()) {
+        return false;
+    }
+
+    bool succeed = false;
+    const size_t asciiCount = charList.length();
+
+    for (size_t i = 0; i < m_interval; i++)
+    {
+        char c = charList[i % asciiCount];
+        succeed = registerAscii(static_cast<size_t>(i), c);
+    }
+    return succeed;
+}
+
 const char AsciiConverter::convert(const Pixel& p) const
 {
     float lum = std::clamp(p.getLuminance(), 0.0f, 255.0f);
 
     size_t brightness = static_cast<size_t>(
-        (lum / 255.0f) * (m_interval - 1)
-    );
+            (lum / 255.0f) * (m_interval - 1)
+            );
 
     brightness = std::clamp(brightness, (size_t)0, m_interval - 1);
 
@@ -42,8 +59,8 @@ const char AsciiConverter::convert(const Pixel& p) const
 const char AsciiConverter::convert(float lum) const
 {
     size_t brightness = static_cast<size_t>(
-        (lum / 255.0f) * (m_interval - 1)
-    );
+            (lum / 255.0f) * (m_interval - 1)
+            );
 
     brightness = std::clamp(brightness, (size_t)0, m_interval - 1);
 

@@ -6,6 +6,7 @@
 class PixelBuffer {
 public:
     PixelBuffer(size_t width, size_t height);
+    PixelBuffer();
 
     //Pixel& at(size_t x, size_t y);
     const Pixel& at(size_t x, size_t y) const;
