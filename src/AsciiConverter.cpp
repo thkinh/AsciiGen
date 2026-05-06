@@ -111,7 +111,7 @@ bool AsciiConverter::convertWholeCanvasByBlock(AsciiCanvas& canvas, const PixelB
     size_t height = buffer.height();
     size_t x = 0;
     size_t y = 0;
-    canvas.clear('.');
+    canvas.clear();
 
     for(size_t i = 0; i <= width-blockWidth; i+=blockWidth) {
         y = 0;
@@ -128,7 +128,7 @@ const char AsciiConverter::convertBlock(const PixelBuffer& buffer, size_t x, siz
     float compressedLum = 0;
     for(size_t i = x; i < x + blockWidth; i++) {
         for(size_t j = y; j < y + blockHeight; j++) {
-            compressedLum += buffer.at(i, j).getLuminance();
+            compressedLum += buffer.at(i, j).getLuminance()/4;
         }
     }
     compressedLum /= (blockWidth * blockHeight);

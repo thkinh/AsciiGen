@@ -5,24 +5,32 @@
 #include "AsciiConverter.h"
 #include "AsciiCanvas.h"
 
-int main() {
+int main(int argc, char** argv) {
     //Create the buffer for storing pixels
     PixelBuffer buf = PixelBuffer();
     PNGImageLoader loader = PNGImageLoader();
 
-    if(!loader.load("../assets/1.png", buf))
+    const char* file_name;
+
+    if (argc > 1) {
+        file_name = argv[1];
+    } else {
+        file_name = "../assets/original-apple.png";
+    }
+
+    if(!loader.load(file_name, buf))
     {
-        std::cout << "Failed\n";
+        std::cout << "File does not exist, or cannot convert the image\n";
         return 1;
     }
     buf.preview(50);
 
-    size_t interval = 10;
+    size_t interval = 90;
     AsciiConverter converter(interval);
 
     //Register ascii chars
     //std::string charList = "@WMBQGNRD$S&%E8gmHwA#K96CUZPXdqbp5023Vae4FhokYsynTcJ[]z7L?xv{}1f>j<t()=I|+lr!i^/\\\"*~;_' :, -`.";
-    std::string charList = "@Mx-.";
+    std::string charList = "@WMe4Fho -`.";
     converter.registerAsciiList(charList);
 
     //Draw the buffer to the canvas
