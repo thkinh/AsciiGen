@@ -1,4 +1,5 @@
 #pragma once
+#include <cstddef>
 #include <vector>
 
 class AsciiCanvas {
@@ -7,6 +8,7 @@ public:
 
     void setChar(size_t x, size_t y, char c);
     char getChar(size_t x, size_t y) const;
+    void resize(size_t width, size_t height);
 
     void clear(char fill = ' ');
     void render(bool trailSpace) const;  // print whole canvas at once

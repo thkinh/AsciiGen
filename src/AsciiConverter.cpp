@@ -3,6 +3,7 @@
 #include "Pixel.h"
 #include "PixelBuffer.h"
 #include <cstddef>
+#include <iostream>
 #include <map>
 #include <stdexcept>
 #include <string>
@@ -91,4 +92,34 @@ bool AsciiConverter::convertWholeCanvas(AsciiCanvas& canvas, const PixelBuffer& 
         }
     }
     return true;
+}
+
+bool AsciiConverter::convertWholeCanvasByBlock(AsciiCanvas& canvas, const PixelBuffer& buffer, size_t blockWidth, size_t blockHeight) 
+{
+    size_t width = buffer.width();
+    size_t height = buffer.height();
+    size_t x = 0;
+    size_t y = 0;
+    canvas.clear('.');
+
+    for(size_t i = 0; i <= width-blockWidth; i+=blockWidth) {
+        y = 0;
+        for(size_t j = 0; j <= height-blockHeight; j+=blockHeight) {
+            canvas.setChar(x, y, convertBlock(buffer, i, j, blockWidth, blockHeight));
+            y++;
+        }
+        x++;
+    }
+    return true;
+}
+
+const char AsciiConverter::convertBlock(const PixelBuffer& buffer, size_t x, size_t y, size_t blockWidth, size_t blockHeight) const {
+    float compressedLum = 0;
+    for(size_t i = x; i < x + blockWidth; i++) {
+        for(size_t j = y; j < y + blockHeight; j++) {
+            compressedLum += buffer.at(i, j).getLuminance();
+        }
+    }
+    compressedLum /= (blockWidth * blockHeight);
+    return convert(compressedLum);
 }

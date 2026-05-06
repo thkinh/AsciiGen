@@ -7,6 +7,7 @@
 #include "Pixel.h"
 #include "AsciiCanvas.h"
 #include "PixelBuffer.h"
+#include <string>
 
 class AsciiConverter
 {
@@ -17,8 +18,10 @@ public:
     const char convert(const Pixel& p) const;
     const char convert(float lum) const;
     const char convert(size_t lum) const;
+    const char convertBlock(const PixelBuffer& buffer, size_t x, size_t y, size_t blockWidth, size_t blockHeight) const;
 
     bool convertWholeCanvas(AsciiCanvas& canvas, const PixelBuffer& buffer);
+    bool convertWholeCanvasByBlock(AsciiCanvas& canvas, const PixelBuffer& buffer, size_t blockWidth, size_t blockHeight);
     const std::map<size_t, char> getMap() const;
 
     bool registerAscii(size_t brightress, char asciiChar);

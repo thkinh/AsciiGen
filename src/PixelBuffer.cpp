@@ -36,6 +36,8 @@ const Pixel& PixelBuffer::at(size_t x, size_t y) const
 {
     if(x > m_width || y > m_height)
     {
+        std::cout << "this shit is too large: " << x << ", Expected: " << m_width << "\n";
+        std::cout << "this shit is too large: " << y << ", Expected: " << m_height << "\n";
         throw std::runtime_error("Out of bound");
     }
     return m_data[y*m_width + x];

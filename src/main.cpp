@@ -10,14 +10,14 @@ int main() {
     PixelBuffer buf = PixelBuffer();
     PNGImageLoader loader = PNGImageLoader();
 
-    if(!loader.load("../assets/1.png", buf))
+    if(!loader.load("../assets/original-apple.png", buf))
     {
         std::cout << "Failed\n";
         return 1;
     }
     buf.preview(50);
 
-    size_t interval = 95;
+    size_t interval = 10;
     AsciiConverter converter(interval);
 
     //Register ascii chars
@@ -25,8 +25,10 @@ int main() {
     converter.registerAsciiList(charList);
 
     //Draw the buffer to the canvas
-    AsciiCanvas canvas = AsciiCanvas(buf.width(), buf.height());
-    if(converter.convertWholeCanvas(canvas, buf))
+    size_t blockWidth  = 4;
+    size_t blockHeight = 10;
+    AsciiCanvas canvas = AsciiCanvas(buf.width()/blockWidth, buf.height()/blockHeight);
+    if(converter.convertWholeCanvasByBlock(canvas, buf, blockWidth, blockHeight))
     {
         canvas.render(false);
     }

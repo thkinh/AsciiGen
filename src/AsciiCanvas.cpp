@@ -1,4 +1,5 @@
 #include "AsciiCanvas.h"
+#include <cstddef>
 #include <iostream>
 
 AsciiCanvas::AsciiCanvas(size_t width, size_t height)
@@ -42,4 +43,9 @@ void AsciiCanvas::render(bool trailSpace = false) const
         std::cout.write(row, m_width);
         std::cout << '\n';
     }
+}
+
+void AsciiCanvas::resize(size_t width, size_t height) {
+    m_width = width;
+    m_height = height;
 }
