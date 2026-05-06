@@ -17,7 +17,8 @@ public:
 
     const char convert(const Pixel& p) const;
     const char convert(float lum) const;
-    const char convert(size_t lum) const;
+    const char convert(size_t brightness) const;
+    const char convert(float lum, size_t custom_interval) const;
     const char convertBlock(const PixelBuffer& buffer, size_t x, size_t y, size_t blockWidth, size_t blockHeight) const;
 
     bool convertWholeCanvas(AsciiCanvas& canvas, const PixelBuffer& buffer);

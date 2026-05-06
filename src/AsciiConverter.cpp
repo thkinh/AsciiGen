@@ -68,6 +68,17 @@ const char AsciiConverter::convert(float lum) const
     return m_asciiMap.at(brightness);
 }
 
+const char AsciiConverter::convert(float lum, size_t custom_interval) const
+{
+    size_t brightness = static_cast<size_t>(
+            (lum / 255.0f) * (custom_interval - 1)
+            );
+
+    brightness = std::clamp(brightness, (size_t)0, custom_interval - 1);
+
+    return m_asciiMap.at(brightness);
+}
+
 
 const char AsciiConverter::convert(size_t brightness) const 
 {
