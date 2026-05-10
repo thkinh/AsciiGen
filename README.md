@@ -1,8 +1,10 @@
 # AsciiGen: Convert images to ascii characters
 
 ## Preview
-<img width="1306" height="1006" alt="image" src="https://github.com/user-attachments/assets/7a624d0f-ef55-47f3-8d85-f3522b928444" />
- 
+<img width="998" height="431" alt="image" src="https://github.com/user-attachments/assets/8ce67aae-3de1-466d-91c6-854be5dee253" />
+
+<img width="653" height="503" alt="image" src="https://github.com/user-attachments/assets/7a624d0f-ef55-47f3-8d85-f3522b928444" />
+
 ## Usage
 
 ### Basic Conversion
